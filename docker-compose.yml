@@ -1,0 +1,78 @@
+version: '3.5'
+services:
+  postgres:
+    image: gpao/database:0.3.0
+    container_name: database
+    hostname: database
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - gpao-network
+  api-gpao:
+    image: gpao/api-gpao:1.1.0
+    container_name: api-gpao
+    hostname: api-gpao
+    restart: always
+    environment:
+     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
+    env_file:
+     - context/api.env
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+    networks:
+      - gpao-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "256m"
+  monitor-gpao:
+    image: gpao/monitor-gpao:1.0.0
+    container_name: monitor-gpao
+    hostname: monitor-gpao
+    restart: always
+    environment:
+     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
+    env_file:
+      - context/monitor.env
+    depends_on:
+      - api-gpao
+    ports:
+      - 8000:8000
+    networks:
+      - gpao-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "256m"
+  client-gpao:
+    image: gpao/client-gpao:0.3.0
+    container_name: client-gpao
+    hostname: client-gpao
+    restart: always
+    environment:
+      - URL_API=api-gpao
+    entrypoint: ["python", "-m", "client.client"]
+    depends_on:
+      - api-gpao
+    networks:
+      - gpao-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "256m"
+volumes:
+  postgres-data:
+networks:
+  gpao-network:
+    name: gpao-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.100.0.0/16
