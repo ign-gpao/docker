@@ -39,6 +39,7 @@ services:
     restart: always
     environment:
      - SERVER_HOSTNAME=${SERVER_HOSTNAME}
+     - BASE_URL=${BASE_URL}
     env_file:
       - context/monitor.env
     depends_on:
