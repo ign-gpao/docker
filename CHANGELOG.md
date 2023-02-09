@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [0.6.0](https://github.com/ign-gpao/docker/tree/0.6.0) (2023-02-09)
+
+[Full Changelog](https://github.com/ign-gpao/docker/compare/0.5.0...0.6.0)
+
+### 📁 Other pull requests
+
+- add var env BASE\_URL monitor [\#4](https://github.com/ign-gpao/docker/pull/4) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [0.5.0](https://github.com/ign-gpao/docker/tree/0.5.0) (2023-01-24)
 
 [Full Changelog](https://github.com/ign-gpao/docker/compare/0.4.0...0.5.0)
