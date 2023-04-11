@@ -11,7 +11,7 @@ Suivre ces deux tutos :
 1. https://docs.docker.com/engine/install/ubuntu/
 2. https://docs.docker.com/engine/install/linux-postinstall/
 
-/!\ Pour gérer le proxy de l'IGN et les erreurs du type `Error response from daemon`:
+/!\ Pour gérer le proxy de l'IGN et les erreurs du type `Error response from daemon` :
 
 * Créer un fichier `/home/"$USER"/.docker/config.json` pour le compte admin et le compte normal et écrire dedans :
 ``` shell
