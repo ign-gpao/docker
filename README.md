@@ -14,7 +14,7 @@ Suivre ces deux tutos :
 /!\ Pour gérer le proxy de l'IGN et les erreurs du type `Error response from daemon`:
 
 * Créer un fichier `/home/"$USER"/.docker/config.json` pour le compte admin et le compte normal et écrire dedans :
-``` json
+``` shell
 {
     "proxies": {
         "default": {
@@ -27,7 +27,7 @@ Suivre ces deux tutos :
 ```
 
 * Créer un fichier   `/etc/systemd/system/docker.service.d/proxy.conf` et écrire dedans :
-``` json
+``` shell
 [Service]
 Environment="HTTP_PROXY=http://proxy.ign.fr:3128"
 Environment="HTTPS_PROXY=http://proxy.ign.fr:3128"
