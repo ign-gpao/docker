@@ -13,26 +13,9 @@ Suivre ces deux tutos :
 
 /!\ Pour gérer le proxy de l'IGN et les erreurs du type `Error response from daemon` :
 
-* Créer un fichier `/home/"$USER"/.docker/config.json` pour le compte admin et le compte normal et écrire dedans :
-``` shell
-{
-    "proxies": {
-        "default": {
-            "httpProxy": "http://proxy.ign.fr:port",
-            "httpsProxy": "http://proxy.ign.fr:port",
-            "noProxy": "api-gpao,localhost,127.0.0.1,.ign.fr"
-        }
-    }
-}
-```
+* Créer un fichier `/home/"$USER"/.docker/config.json` pour le compte admin et le compte normal en suivant la doc https://docs.docker.com/network/proxy/
 
-* Créer un fichier   `/etc/systemd/system/docker.service.d/proxy.conf` et écrire dedans :
-``` shell
-[Service]
-Environment="HTTP_PROXY=http://proxy.ign.fr:port"
-Environment="HTTPS_PROXY=http://proxy.ign.fr:port"
-Environment="NO_PROXY="localhost,127.0.0.1,::1
-```
+* Créer un fichier `/etc/systemd/system/docker.service.d/proxy.conf` et configurer les variables d'environment HTTP_PROXY, HTTPS_PROXY et NO_PROXY en suivant la doc https://docs.docker.com/config/daemon/systemd/
 
 Un `systemctl restart docker` voire  un reboot la machine sera peut-être nécessaire pour les prendre en compte.
 
