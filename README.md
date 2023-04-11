@@ -18,8 +18,8 @@ Suivre ces deux tutos :
 {
     "proxies": {
         "default": {
-            "httpProxy": "http://proxy.ign.fr:3128",
-            "httpsProxy": "http://proxy.ign.fr:3128",
+            "httpProxy": "http://proxy.ign.fr:port",
+            "httpsProxy": "http://proxy.ign.fr:port",
             "noProxy": "api-gpao,localhost,127.0.0.1,.ign.fr"
         }
     }
@@ -29,8 +29,8 @@ Suivre ces deux tutos :
 * Créer un fichier   `/etc/systemd/system/docker.service.d/proxy.conf` et écrire dedans :
 ``` shell
 [Service]
-Environment="HTTP_PROXY=http://proxy.ign.fr:3128"
-Environment="HTTPS_PROXY=http://proxy.ign.fr:3128"
+Environment="HTTP_PROXY=http://proxy.ign.fr:port"
+Environment="HTTPS_PROXY=http://proxy.ign.fr:port"
 Environment="NO_PROXY="localhost,127.0.0.1,::1
 ```
 
