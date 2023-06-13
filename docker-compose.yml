@@ -35,7 +35,7 @@ services:
       options:
         max-size: "256m"
   monitor-gpao:
-    image: gpao/monitor-gpao:1.36.0
+    image: gpao/monitor-gpao:1.37.0
     container_name: monitor-gpao
     hostname: monitor-gpao
     restart: always
