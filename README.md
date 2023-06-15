@@ -25,7 +25,7 @@ Vérifier avec un `docker info` que les variables proxy sont enregistrées.
 
 Cloner le dépôt ign-gpao/docker et dans un terminal lancer la commande suivante :
 ``` shell
-SERVER_HOSTNAME=localhost docker compose up --scale client-gpao=0
+docker compose up --scale client-gpao=0
 ```
 
 Les images Dockers sont téléchargées sur le [DockerHub de la GPAO](https://hub.docker.com/u/gpao) et les conteneurs database-gpao, api-gpao et monitor-gpao sont lancés automatiquement via le fichier `docker-compose.yml`. Le monitor est alors accessible à l'adresse `localhost:8000/` et le client est à lancer à part.
