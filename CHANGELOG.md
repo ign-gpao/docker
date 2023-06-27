@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [0.16.0](https://github.com/ign-gpao/docker/tree/0.16.0) (2023-06-27)
+
+[Full Changelog](https://github.com/ign-gpao/docker/compare/0.15.0...0.16.0)
+
+### 📁 Other pull requests
+
+- maj var env [\#6](https://github.com/ign-gpao/docker/pull/6) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [0.15.0](https://github.com/ign-gpao/docker/tree/0.15.0) (2023-06-27)
 
 [Full Changelog](https://github.com/ign-gpao/docker/compare/0.14.0...0.15.0)
