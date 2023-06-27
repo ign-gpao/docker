@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   postgres:
-    image: gpao/database:0.14.0
+    image: gpao/database:0.17.0
     container_name: database
     hostname: database
     restart: always
@@ -14,7 +14,7 @@ services:
     networks:
       - gpao-network
   api-gpao:
-    image: gpao/api-gpao:1.25.0
+    image: gpao/api-gpao:1.30.0
     container_name: api-gpao
     hostname: api-gpao
     restart: always
@@ -35,7 +35,7 @@ services:
       options:
         max-size: "256m"
   monitor-gpao:
-    image: gpao/monitor-gpao:1.41.0
+    image: gpao/monitor-gpao:1.46.0
     container_name: monitor-gpao
     hostname: monitor-gpao
     restart: always
@@ -54,7 +54,7 @@ services:
       options:
         max-size: "256m"
   client-gpao:
-    image: gpao/client-gpao:0.16.0
+    image: gpao/client-gpao:0.18.0
     container_name: client-gpao
     hostname: client-gpao
     restart: always
