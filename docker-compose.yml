@@ -19,7 +19,9 @@ services:
     hostname: api-gpao
     restart: always
     environment:
-     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
+     - GPAO_API_URL=${GPAO_API_URL}
+     - GPAO_API_PROTOCOL=${GPAO_API_PROTOCOL}
+     - GPAO_API_PORT=${GPAO_API_PORT}
     env_file:
      - context/api.env
     depends_on:
@@ -38,8 +40,7 @@ services:
     hostname: monitor-gpao
     restart: always
     environment:
-     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
-     - BASE_URL=${BASE_URL}
+     - GPAO_MONITOR_BASE_URL=${GPAO_MONITOR_BASE_URL}
     env_file:
       - context/monitor.env
     depends_on:
@@ -58,7 +59,7 @@ services:
     hostname: client-gpao
     restart: always
     environment:
-      - URL_API=api-gpao
+      - GPAO_API_URL=api-gpao
     entrypoint: ["python", "-m", "client.client"]
     depends_on:
       - api-gpao
