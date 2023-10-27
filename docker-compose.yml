@@ -14,7 +14,7 @@ services:
     networks:
       - gpao-network
   api-gpao:
-    image: gpao/api-gpao:1.30.0
+    image: gpao/api-gpao:1.31.0
     container_name: api-gpao
     hostname: api-gpao
     restart: always
@@ -35,7 +35,7 @@ services:
       options:
         max-size: "256m"
   monitor-gpao:
-    image: gpao/monitor-gpao:1.46.0
+    image: gpao/monitor-gpao:1.47.0
     container_name: monitor-gpao
     hostname: monitor-gpao
     restart: always
