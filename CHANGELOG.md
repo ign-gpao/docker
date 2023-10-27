@@ -1,5 +1,9 @@
 # 📑 Changelog
 
+## [0.19.0](https://github.com/ign-gpao/docker/tree/0.19.0) (2023-10-27)
+
+[Full Changelog](https://github.com/ign-gpao/docker/compare/0.18.0...0.19.0)
+
 ## [0.18.0](https://github.com/ign-gpao/docker/tree/0.18.0) (2023-10-27)
 
 [Full Changelog](https://github.com/ign-gpao/docker/compare/0.17.0...0.18.0)
