@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   postgres:
-    image: gpao/database:0.14.0
+    image: postgis/postgis:15-3.4
     container_name: database
     hostname: database
     restart: always
@@ -13,13 +13,27 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - gpao-network
+  geoserver:
+    image: geoserver-gpao
+    container_name: geoserver-gpao
+    hostname: geoserver
+    restart: always
+    ports:
+      - 8081:8080
+    volumes:
+      - geoserver-data:/opt/geoserver_data
+      - geoserver-metadata:/opt/apache-tomcat-9.0.68/webapps/geoserver/WEB-INF/
+    networks:
+      - gpao-network
   api-gpao:
-    image: gpao/api-gpao:1.25.0
+    image: gpao/api-gpao:1.32.0
     container_name: api-gpao
     hostname: api-gpao
     restart: always
     environment:
-     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
+     - GPAO_API_URL=${GPAO_API_URL}
+     - GPAO_API_PROTOCOL=${GPAO_API_PROTOCOL}
+     - GPAO_API_PORT=${GPAO_API_PORT}
     env_file:
      - context/api.env
     depends_on:
@@ -33,13 +47,13 @@ services:
       options:
         max-size: "256m"
   monitor-gpao:
-    image: gpao/monitor-gpao:1.37.0
+    image: gpao/monitor-gpao:1.47.0
     container_name: monitor-gpao
     hostname: monitor-gpao
     restart: always
     environment:
-     - SERVER_HOSTNAME=${SERVER_HOSTNAME}
-     - BASE_URL=${BASE_URL}
+     - GPAO_MONITOR_BASE_URL=${GPAO_MONITOR_BASE_URL}
+     - GPAO_ACTIVATE_MAP=${GPAO_ACTIVATE_MAP}
     env_file:
       - context/monitor.env
     depends_on:
@@ -53,12 +67,12 @@ services:
       options:
         max-size: "256m"
   client-gpao:
-    image: gpao/client-gpao:0.16.0
+    image: gpao/client-gpao:0.18.0
     container_name: client-gpao
     hostname: client-gpao
     restart: always
     environment:
-      - URL_API=api-gpao
+      - GPAO_API_URL=api-gpao
     entrypoint: ["python", "-m", "client.client"]
     depends_on:
       - api-gpao
@@ -70,6 +84,8 @@ services:
         max-size: "256m"
 volumes:
   postgres-data:
+  geoserver-data:
+  geoserver-metadata:
 networks:
   gpao-network:
     name: gpao-network
