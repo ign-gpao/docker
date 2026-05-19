@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [0.20.0](https://github.com/ign-gpao/docker/tree/0.20.0) (2026-05-19)
+
+[Full Changelog](https://github.com/ign-gpao/docker/compare/0.19.0...0.20.0)
+
+### 📁 Other pull requests
+
+- update to last gpao versions [\#8](https://github.com/ign-gpao/docker/pull/8) ([gliegard](https://github.com/gliegard))
+
 ## [0.19.0](https://github.com/ign-gpao/docker/tree/0.19.0) (2023-10-27)
 
 [Full Changelog](https://github.com/ign-gpao/docker/compare/0.18.0...0.19.0)
